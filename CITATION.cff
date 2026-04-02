@@ -20,8 +20,13 @@ authors:
     orcid: "https://orcid.org/0000-0001-6165-7389"
     affiliation: "Northwest Missouri State University, USA"
 
-repository-code: "https://github.com/denisecase/nlp-05-web-documents"
-url: "https://github.com/denisecase/nlp-05-web-documents"
+  - family-names: Sowers
+    given-names: Sabriya S.
+    orcid: "https://orcid.org/0000-0001-6165-7389"
+    affiliation: "Northwest Missouri State University, USA"
+
+repository-code: "https://github.com/ssowers2/nlp-05-web-documents"
+url: "https://github.com/ssowers2/nlp-05-web-documents"
 license: MIT
 
 abstract: |
