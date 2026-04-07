@@ -201,3 +201,10 @@ so later steps can run without errors or unexpected results.
 In this project, validation is implemented directly,
 so all checks are visible, repeatable, and easy to review as part
 of the pipeline.
+
+## 🔧 Changes Made
+Added a derived field (`title_word_count`) in the transform stage to calculate the number of words in each paper title. This extends the pipeline by creating a new feature from extracted HTML data.
+
+## ▶️ How to Run
+```bash
+python src/nlp/pipeline_web_html.py
