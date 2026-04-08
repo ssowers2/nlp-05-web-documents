@@ -1,35 +1,3 @@
-"""
-src/nlp/stage02_validate_case.py - Validate Stage
-(EDIT YOUR COPY OF THIS FILE)
-
-Source: Raw HTML string
-Sink:   BeautifulSoup object (in memory)
-
-Purpose
-
-  Validates that the expected page structure is present.
-
-Analytical Questions
-
-- What is the top-level structure of the HTML document?
-- What elements are present in the document?
-- What data types are associated with each field?
-- Does the data meet expectations for transformation?
-
-Notes
-
-Following our process, do NOT edit this _case file directly,
-keep it as a working example.
-
-In your custom project, copy this _case.py file and
-append with _yourname.py instead.
-
-Then edit your copied Python file to:
-- inspect the JSON structure for your API,
-- validate required keys and types,
-- confirm the data is usable for your analysis.
-"""
-
 # ============================================================
 # Section 1. Setup and Imports
 # ============================================================
@@ -81,30 +49,33 @@ def run_validate(
     # VALIDATE EXPECTATIONS
     # ============================================================
 
-    # Check for expected structural elements
-    title = soup.find("h1", class_="title")
-    authors = soup.find("div", class_="authors")
-    abstract = soup.find("blockquote", class_="abstract")
-    subjects = soup.find("div", class_="subheader")
-    dateline = soup.find("div", class_="dateline")
+    # Check for expected structural elements on the KISS homepage
+    title = soup.find("h1")
+    if title is None:
+        title = soup.find("h2")
+
+    subtitle = soup.find(
+        string=lambda text: (
+            isinstance(text, str) and "Improving Stroke Outcomes Across Kansas" in text
+        )
+    )
+    map_heading = soup.find("h3")
+    capability_levels = soup.find_all("h5")
 
     LOG.info("VALIDATE: Title found: %s", title is not None)
-    LOG.info("VALIDATE: Authors found: %s", authors is not None)
-    LOG.info("VALIDATE: Abstract found: %s", abstract is not None)
-    LOG.info("VALIDATE: Subjects found: %s", subjects is not None)
-    LOG.info("VALIDATE: Dateline found: %s", dateline is not None)
+    LOG.info("VALIDATE: Subtitle found: %s", subtitle is not None)
+    LOG.info("VALIDATE: Map heading found: %s", map_heading is not None)
+    LOG.info("VALIDATE: Capability levels found: %s", len(capability_levels) > 0)
 
     missing = []
     if not title:
         missing.append("title")
-    if not authors:
-        missing.append("authors")
-    if not abstract:
-        missing.append("abstract")
-    if not subjects:
-        missing.append("subjects")
-    if not dateline:
-        missing.append("dateline")
+    if not subtitle:
+        missing.append("subtitle")
+    if not map_heading:
+        missing.append("map_heading")
+    if not capability_levels:
+        missing.append("capability_levels")
 
     if missing:
         raise ValueError(

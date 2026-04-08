@@ -202,9 +202,32 @@ In this project, validation is implemented directly,
 so all checks are visible, repeatable, and easy to review as part
 of the pipeline.
 
-## 🔧 Changes Made
+## 🔧 Phase 4: Changes Made
+
 Added a derived field (`title_word_count`) in the transform stage to calculate the number of words in each paper title. This extends the pipeline by creating a new feature from extracted HTML data.
 
-## ▶️ How to Run
+## 🔧 Phase 5: Changes Made: Applied Pipeline to a New Website
+
+In Phase 5, I applied the EVTL (Extract, Validate, Transform, Load) pipeline to a new HTML source: the KISS Network website.
+
+- Updated the data source to `https://www.kissnetwork.us/`
+- Modified the validation stage to match the structure of the new HTML page
+- Rewrote the transform stage to extract relevant fields from the new site:
+  - title
+  - subtitle (from `<title>` tag)
+  - map heading
+  - capability levels
+  - page description (from `<meta>` tag)
+- Removed arXiv-specific fields (authors, abstract, subjects, dateline)
+- Added derived fields:
+  - `title_word_count`
+  - `capability_count`
+
+### Outcome
+
+The pipeline successfully extracts and structures data from the new website into a clean, analysis-ready dataset. This demonstrates the ability to adapt HTML parsing logic to different page structures.
+
+## How to Run
+
 ```bash
 python src/nlp/pipeline_web_html.py

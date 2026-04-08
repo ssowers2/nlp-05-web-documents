@@ -1,87 +1,3 @@
-"""
-src/nlp/stage03_transform_case.py
-(EDIT YOUR COPY OF THIS FILE)
-
-Source: validated BeautifulSoup object
-Sink: Pandas DataFrame
-
-NOTE: We use Pandas here to contrast with Polars (from Module 4).
-You may use Polars or another library if you prefer:
-the pipeline pattern is identical; only the DataFrame API differs.
-
-Pandas vs. Polars:
-- Pandas is widely used and has a larger ecosystem.
-- Polars is faster, more memory efficient, handles larger datasets,
-  and is better suited for production pipelines and complex
-  transformations.
-
-Purpose
-
-  Transform validated BeautifulSoup object into a structured format.
-
-Analytical Questions
-
-- Which fields are needed from the HTML data?
-- How can records be normalized into tabular form?
-- What derived fields would support analysis?
-
-How to find the fields you want to extract from the web page:
-
-  1. Open the web page in your browser.
-  2. Right-click anywhere on the page and select "View Page Source".
-  3. Use Ctrl+F to search for text you can see on the page,
-     e.g. the paper title or "Abstract:".
-  4. Find the HTML tag and class that wraps it, e.g.:
-       <h1 class="title mathjax"><span class="descriptor">Title:</span>
-  5. Use soup.find("h1", class_="title") to locate the associated tag.
-  6. Use .get_text(strip=True) to extract the visible text from inside the tag.
-  7. If the tag contains a descriptor prefix like "Title:" or "Authors:",
-     use .replace("Title:", "").strip() to remove it.
-  8. If the tag is not found, soup.find() returns None which is not a string.
-     To avoid errors, use a conditional expression to return "unknown" as a safe fallback:
-       value = tag.get_text(strip=True) if tag else "unknown"
-
-Apply this process for each field you want to extract for analysis.
-The same approach works for any web page.
-
-Example: For the arXiv page at https://arxiv.org/abs/2602.20021,
-we can extract the following fields using BeautifulSoup:
-
-- title from <h1 class="title"> (string)
-- authors from <div class="authors"> (string)
-- abstract from <blockquote class="abstract"> (string)
-- primary subject from <div class="subheader"> (string)
-- submission date from <div class="dateline"> (string)
-- arXiv ID from canonical link in the <head> section (string)
-
-we can calculate derived fields like:
-- abstract word count (integer)
-- author count (integer)
-
-IMPORTANT: Getting information from a web page is not as simple as it looks.
-Web pages are designed for human consumption, not for data extraction.
-The HTML structure can be complex and inconsistent, and may require careful inspection and handling to extract the desired information.
-The title and abstract are wrapped in tags with descriptor text ("Title:", "Abstract:") that must be removed to get clean values.
-The authors are listed as multiple <a> tags inside a <div>, so we must extract each author separately and join them with commas to avoid double-comma issues.
-The arXiv ID is not directly visible on the page but can be extracted from the canonical link in the HTML head.
-This stage requires careful inspection of the HTML structure and thoughtful handling of edge cases to ensure we extract clean, structured data for analysis.
-
-Use all your resources, creativity, and problem-solving skills to navigate the complexities of web data extraction and transformation.
-
-Notes
-
-Following our process, do NOT edit this _case file directly,
-keep it as a working example.
-
-In your custom project, copy this _case.py file and
-append with _yourname.py instead.
-
-Then edit your copied Python file to:
-- extract the fields needed for your analysis,
-- normalize records into a consistent structure,
-- create any derived fields required.
-"""
-
 # ============================================================
 # Section 1. Setup and Imports
 # ============================================================
@@ -271,6 +187,7 @@ def run_transform(
     )
     LOG.info(f"Calculated author count: {author_count}")
 
+    # Phase 4: Added derived field (title_word_count)
     # Calculate derived field: title word count
     title_word_count: int = (
         len(title.split()) if title != "unknown" else 0
@@ -281,6 +198,7 @@ def run_transform(
     LOG.info("STAGE 03f: Build record and create DataFrame")
     LOG.info("========================")
 
+    # Phase 4: Added derived field (title_word_count)
     record = {
         "arxiv_id": arxiv_id,
         "title": title,

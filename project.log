@@ -181,3 +181,754 @@
 2026-04-07 18:04:21 | INFO | CI | ========================
 2026-04-07 18:04:21 | INFO | CI | Pipeline executed successfully!
 2026-04-07 18:04:21 | INFO | CI | ========================
+2026-04-08 17:30:36 | INFO | CI | === RUN START ===
+2026-04-08 17:30:36 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 17:30:36 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 17:30:36 | INFO | CI | python=3.14.3
+2026-04-08 17:30:36 | INFO | CI | os=Windows 11
+2026-04-08 17:30:36 | INFO | CI | shell=powershell
+2026-04-08 17:30:36 | INFO | CI | cwd=.
+2026-04-08 17:30:36 | INFO | CI | github_actions=False
+2026-04-08 17:30:36 | INFO | CI | START PIPELINE
+2026-04-08 17:30:36 | INFO | CI | ROOT_PATH = .
+2026-04-08 17:30:36 | INFO | CI | DATA_PATH = data
+2026-04-08 17:30:36 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 17:30:36 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 17:30:36 | INFO | CI | ========================
+2026-04-08 17:30:36 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 17:30:36 | INFO | CI | ========================
+2026-04-08 17:30:36 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/abs/2602.20021
+2026-04-08 17:30:37 | INFO | CI | SOURCE URL = https://arxiv.org/abs/2602.20021
+2026-04-08 17:30:37 | INFO | CI | SINK PATH = data\raw\case_raw.html
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 17:30:37 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 17:30:37 | INFO | CI | Top-level elements: ['html']
+2026-04-08 17:30:37 | INFO | CI | VALIDATE: Title found: True
+2026-04-08 17:30:37 | INFO | CI | VALIDATE: Authors found: True
+2026-04-08 17:30:37 | INFO | CI | VALIDATE: Abstract found: True
+2026-04-08 17:30:37 | INFO | CI | VALIDATE: Subjects found: True
+2026-04-08 17:30:37 | INFO | CI | VALIDATE: Dateline found: True
+2026-04-08 17:30:37 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-08 17:30:37 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | Extracting metadata from HTML
+2026-04-08 17:30:37 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-08 17:30:37 | INFO | CI | For this arXiv page, we can extract:
+- Title from <h1 class='title'>
+- Authors from <div class='authors'>
+- Abstract from <blockquote class='abstract'>
+- Primary subject from <div class='subheader'>
+- Submission date from <div class='dateline'>
+- ArXiv ID from canonical link
+2026-04-08 17:30:37 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | STAGE 03a: Extract bibliographic fields (title, authors, abstract)
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | Extracted title: Agents of Chaos
+2026-04-08 17:30:37 | INFO | CI | Extracted authors: Natalie Shapira, Chris Wendler, Avery Yen, Gabriele Sarti, Koyena Pal, Olivia Floody, Adam Belfki, Alex Loftus, Aditya Ratan Jannali, Nikhil Prakash, Jasmine Cui, Giordano Rogers, Jannik Brinkmann, Can Rager, Amir Zur, Michael Ripa, Aruna Sankaranarayanan, David Atkinson, Rohit Gandikota, Jaden Fiotto-Kaufman, EunJeong Hwang, Hadas Orgad, P Sam Sahil, Negev Taglicht, Tomer Shabtay, Atai Ambus, Nitay Alon, Shiri Oron, Ayelet Gordon-Tapiero, Yotam Kaplan, Vered Shwartz, Tamar Rott Shaham, Christoph Riedl, Reuth Mirsky, Maarten Sap, David Manheim, Tomer Ullman, David Bau
+2026-04-08 17:30:37 | INFO | CI | Extracted abstract: We report an exploratory red-teaming study of autonomous language-model-powered agents deployed in a...
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | STAGE 03b: Extract metadata field subjects from subheader
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | Extracted subjects: Computer Science > Artificial Intelligence
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | STAGE 03c: Extract metadata field date from dateline
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | Extracted submitted: [Submitted on 23 Feb 2026]
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | STAGE 03d: Extract metadata field arxiv_id from canonical link
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | Extracted arxiv_id: 2602.20021
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | STAGE 03e: Calculate derived fields
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | Calculated abstract word count: 177
+2026-04-08 17:30:37 | INFO | CI | Calculated author count: 38
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | STAGE 03f: Build record and create DataFrame
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | Created DataFrame with 1 row and 8 columns
+2026-04-08 17:30:37 | INFO | CI | Columns: ['arxiv_id', 'title', 'authors', 'subjects', 'submitted', 'abstract', 'abstract_word_count', 'author_count']
+2026-04-08 17:30:37 | INFO | CI | DataFrame Details
+2026-04-08 17:30:37 | INFO | CI |   Title: Agents of Chaos
+2026-04-08 17:30:37 | INFO | CI |   Author count: 38
+2026-04-08 17:30:37 | INFO | CI |   Abstract word count: 177
+2026-04-08 17:30:37 | INFO | CI |   DataFrame preview:
+     arxiv_id            title  ... abstract_word_count author_count
+0  2602.20021  Agents of Chaos  ...                 177           38
+
+[1 rows x 8 columns]
+2026-04-08 17:30:37 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-08 17:30:37 | INFO | CI | Transformation complete.
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | SINK PATH = data\processed\case_processed.csv
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:30:37 | INFO | CI | Pipeline executed successfully!
+2026-04-08 17:30:37 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | === RUN START ===
+2026-04-08 17:43:15 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 17:43:15 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 17:43:15 | INFO | CI | python=3.14.3
+2026-04-08 17:43:15 | INFO | CI | os=Windows 11
+2026-04-08 17:43:15 | INFO | CI | shell=powershell
+2026-04-08 17:43:15 | INFO | CI | cwd=.
+2026-04-08 17:43:15 | INFO | CI | github_actions=False
+2026-04-08 17:43:15 | INFO | CI | START PIPELINE
+2026-04-08 17:43:15 | INFO | CI | ROOT_PATH = .
+2026-04-08 17:43:15 | INFO | CI | DATA_PATH = data
+2026-04-08 17:43:15 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 17:43:15 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/abs/2602.20021
+2026-04-08 17:43:15 | INFO | CI | SOURCE URL = https://arxiv.org/abs/2602.20021
+2026-04-08 17:43:15 | INFO | CI | SINK PATH = data\raw\case_raw.html
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 17:43:15 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 17:43:15 | INFO | CI | Top-level elements: ['html']
+2026-04-08 17:43:15 | INFO | CI | VALIDATE: Title found: True
+2026-04-08 17:43:15 | INFO | CI | VALIDATE: Authors found: True
+2026-04-08 17:43:15 | INFO | CI | VALIDATE: Abstract found: True
+2026-04-08 17:43:15 | INFO | CI | VALIDATE: Subjects found: True
+2026-04-08 17:43:15 | INFO | CI | VALIDATE: Dateline found: True
+2026-04-08 17:43:15 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-08 17:43:15 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | Extracting metadata from HTML
+2026-04-08 17:43:15 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-08 17:43:15 | INFO | CI | For this KISS page, we can extract:
+- Title from <h1> or <h2>
+- Subtitle from visible page text
+- Map heading from <h3>
+- Capability levels from <h5>
+- Contact email from page text
+2026-04-08 17:43:15 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | STAGE 03a: Extract key page fields
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | Extracted title: Computer Science > Artificial Intelligence
+2026-04-08 17:43:15 | INFO | CI | Extracted subtitle: unknown
+2026-04-08 17:43:15 | INFO | CI | Extracted map heading: References & Citations
+2026-04-08 17:43:15 | INFO | CI | Extracted capability levels: unknown
+2026-04-08 17:43:15 | INFO | CI | Extracted contact email: unknown
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | STAGE 03b: Calculate derived fields
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | Calculated title word count: 5
+2026-04-08 17:43:15 | INFO | CI | Calculated capability count: 0
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | STAGE 03c: Build record and create DataFrame
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | Created DataFrame with 1 row and 7 columns
+2026-04-08 17:43:15 | INFO | CI | Columns: ['title', 'subtitle', 'map_heading', 'capability_levels', 'contact_email', 'title_word_count', 'capability_count']
+2026-04-08 17:43:15 | INFO | CI | DataFrame Details
+2026-04-08 17:43:15 | INFO | CI |   Title: Computer Science > Artificial Intelligence
+2026-04-08 17:43:15 | INFO | CI |   Capability count: 0
+2026-04-08 17:43:15 | INFO | CI |   Title word count: 5
+2026-04-08 17:43:15 | INFO | CI |   DataFrame preview:
+                                        title subtitle             map_heading  ... contact_email title_word_count  capability_count
+0  Computer Science > Artificial Intelligence  unknown  References & Citations  ...       unknown                5                 0
+
+[1 rows x 7 columns]
+2026-04-08 17:43:15 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-08 17:43:15 | INFO | CI | Transformation complete.
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | SINK PATH = data\processed\case_processed.csv
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:43:15 | INFO | CI | Pipeline executed successfully!
+2026-04-08 17:43:15 | INFO | CI | ========================
+2026-04-08 17:49:54 | INFO | CI | === RUN START ===
+2026-04-08 17:49:54 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 17:49:54 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 17:49:54 | INFO | CI | python=3.14.3
+2026-04-08 17:49:54 | INFO | CI | os=Windows 11
+2026-04-08 17:49:54 | INFO | CI | shell=powershell
+2026-04-08 17:49:54 | INFO | CI | cwd=.
+2026-04-08 17:49:54 | INFO | CI | github_actions=False
+2026-04-08 17:49:54 | INFO | CI | START PIPELINE
+2026-04-08 17:49:54 | INFO | CI | ROOT_PATH = .
+2026-04-08 17:49:54 | INFO | CI | DATA_PATH = data
+2026-04-08 17:49:54 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 17:49:54 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 17:49:54 | INFO | CI | ========================
+2026-04-08 17:49:54 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 17:49:54 | INFO | CI | ========================
+2026-04-08 17:49:54 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-08 17:49:56 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-08 17:49:56 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-08 17:49:56 | INFO | CI | ========================
+2026-04-08 17:49:56 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 17:49:56 | INFO | CI | ========================
+2026-04-08 17:49:56 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 17:49:56 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 17:49:56 | INFO | CI | Top-level elements: ['html']
+2026-04-08 17:49:56 | INFO | CI | VALIDATE: Title found: False
+2026-04-08 17:49:56 | INFO | CI | VALIDATE: Authors found: False
+2026-04-08 17:49:56 | INFO | CI | VALIDATE: Abstract found: False
+2026-04-08 17:49:56 | INFO | CI | VALIDATE: Subjects found: False
+2026-04-08 17:49:56 | INFO | CI | VALIDATE: Dateline found: False
+2026-04-08 17:53:39 | INFO | CI | === RUN START ===
+2026-04-08 17:53:39 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 17:53:39 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 17:53:39 | INFO | CI | python=3.14.3
+2026-04-08 17:53:39 | INFO | CI | os=Windows 11
+2026-04-08 17:53:39 | INFO | CI | shell=powershell
+2026-04-08 17:53:39 | INFO | CI | cwd=.
+2026-04-08 17:53:39 | INFO | CI | github_actions=False
+2026-04-08 17:53:39 | INFO | CI | START PIPELINE
+2026-04-08 17:53:39 | INFO | CI | ROOT_PATH = .
+2026-04-08 17:53:39 | INFO | CI | DATA_PATH = data
+2026-04-08 17:53:39 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 17:53:39 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 17:53:39 | INFO | CI | ========================
+2026-04-08 17:53:39 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 17:53:39 | INFO | CI | ========================
+2026-04-08 17:53:39 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-08 17:53:40 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-08 17:53:40 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-08 17:53:40 | INFO | CI | ========================
+2026-04-08 17:53:40 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 17:53:40 | INFO | CI | ========================
+2026-04-08 17:53:40 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 17:53:40 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 17:53:40 | INFO | CI | Top-level elements: ['html']
+2026-04-08 17:53:40 | INFO | CI | VALIDATE: Title found: False
+2026-04-08 17:53:40 | INFO | CI | VALIDATE: Authors found: False
+2026-04-08 17:53:40 | INFO | CI | VALIDATE: Abstract found: False
+2026-04-08 17:53:40 | INFO | CI | VALIDATE: Subjects found: False
+2026-04-08 17:53:40 | INFO | CI | VALIDATE: Dateline found: False
+2026-04-08 17:56:09 | INFO | CI | === RUN START ===
+2026-04-08 17:56:09 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 17:56:09 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 17:56:09 | INFO | CI | python=3.14.3
+2026-04-08 17:56:09 | INFO | CI | os=Windows 11
+2026-04-08 17:56:09 | INFO | CI | shell=powershell
+2026-04-08 17:56:09 | INFO | CI | cwd=.
+2026-04-08 17:56:09 | INFO | CI | github_actions=False
+2026-04-08 17:56:09 | INFO | CI | START PIPELINE
+2026-04-08 17:56:09 | INFO | CI | ROOT_PATH = .
+2026-04-08 17:56:09 | INFO | CI | DATA_PATH = data
+2026-04-08 17:56:09 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 17:56:09 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 17:56:09 | INFO | CI | ========================
+2026-04-08 17:56:09 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 17:56:09 | INFO | CI | ========================
+2026-04-08 17:56:09 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-08 17:56:10 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-08 17:56:10 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 17:56:10 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 17:56:10 | INFO | CI | Top-level elements: ['html']
+2026-04-08 17:56:10 | INFO | CI | VALIDATE: Title found: True
+2026-04-08 17:56:10 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-08 17:56:10 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-08 17:56:10 | INFO | CI | VALIDATE: Capability levels found: True
+2026-04-08 17:56:10 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-08 17:56:10 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | Extracting metadata from HTML
+2026-04-08 17:56:10 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-08 17:56:10 | INFO | CI | For this KISS page, we can extract:
+- Title from <h1> or <h2>
+- Subtitle from visible page text
+- Map heading from <h3>
+- Capability levels from <h5>
+- Contact email from page text
+2026-04-08 17:56:10 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | STAGE 03a: Extract key page fields
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | Extracted title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 17:56:10 | INFO | CI | Extracted subtitle: {"@context":"https:\/\/schema.org","@graph":[{"@type":"BreadcrumbList","@id":"https:\/\/www.kissnetwork.us\/#breadcrumblist","itemListElement":[{"@type":"ListItem","@id":"https:\/\/www.kissnetwork.us#listItem","position":1,"name":"Home"}]},{"@type":"Organization","@id":"https:\/\/www.kissnetwork.us\/#organization","name":"Kansas Initiative for Stroke Survival (KISS) Kansas Initiative for Stroke Survival (KISS)","description":"Improving Stroke Outcomes Across Kansas Pevent.Treat.Beat.","url":"https:\/\/www.kissnetwork.us\/","logo":{"@type":"ImageObject","url":"https:\/\/www.kissnetwork.us\/wp-content\/uploads\/2021\/01\/cropped-cropped-White-Yellow-KISS-Logo-Brain-State-Outline.png","@id":"https:\/\/www.kissnetwork.us\/#organizationLogo","width":4376,"height":1993},"image":{"@id":"https:\/\/www.kissnetwork.us\/#organizationLogo"},"sameAs":["https:\/\/www.facebook.com\/KansasInitiativeforStrokeSurvival\/","https:\/\/www.instagram.com\/kiss_strokesurvival","https:\/\/youtube.com\/@kansasinitiativeforstrokesurvi?feature=shared"]},{"@type":"WebPage","@id":"https:\/\/www.kissnetwork.us\/#webpage","url":"https:\/\/www.kissnetwork.us\/","name":"Kansas Initiative for Stroke Survival | Prevent, Treat, Beat","description":"Kansas Initiative for Stroke Survival works to prevent stroke, improve treatment, and support recovery through education, resources, and community action.","inLanguage":"en","isPartOf":{"@id":"https:\/\/www.kissnetwork.us\/#website"},"breadcrumb":{"@id":"https:\/\/www.kissnetwork.us\/#breadcrumblist"},"datePublished":"2016-05-30T17:58:55-05:00","dateModified":"2026-03-08T15:40:51-05:00"},{"@type":"WebSite","@id":"https:\/\/www.kissnetwork.us\/#website","url":"https:\/\/www.kissnetwork.us\/","name":"Kansas Initiative for Stroke Survival (KISS)","description":"Improving Stroke Outcomes Across Kansas","inLanguage":"en","publisher":{"@id":"https:\/\/www.kissnetwork.us\/#organization"}}]}
+2026-04-08 17:56:10 | INFO | CI | Extracted map heading: Hospital Stroke Treatment Capability Map
+2026-04-08 17:56:10 | INFO | CI | Extracted capability levels: Advanced Comprehensive Stroke Center, Primary Stroke Center, Certified Acute Stroke Ready Hospital, Emergent Stroke Ready Hospitals, Non-Emergent Stroke Ready Hospital
+2026-04-08 17:56:10 | INFO | CI | Extracted contact email: 
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | STAGE 03b: Calculate derived fields
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | Calculated title word count: 6
+2026-04-08 17:56:10 | INFO | CI | Calculated capability count: 5
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | STAGE 03c: Build record and create DataFrame
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | Created DataFrame with 1 row and 7 columns
+2026-04-08 17:56:10 | INFO | CI | Columns: ['title', 'subtitle', 'map_heading', 'capability_levels', 'contact_email', 'title_word_count', 'capability_count']
+2026-04-08 17:56:10 | INFO | CI | DataFrame Details
+2026-04-08 17:56:10 | INFO | CI |   Title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 17:56:10 | INFO | CI |   Capability count: 5
+2026-04-08 17:56:10 | INFO | CI |   Title word count: 6
+2026-04-08 17:56:10 | INFO | CI |   DataFrame preview:
+                                          title  ... capability_count
+0  Kansas Initiative for Stroke Survival (KISS)  ...                5
+
+[1 rows x 7 columns]
+2026-04-08 17:56:10 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-08 17:56:10 | INFO | CI | Transformation complete.
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | SINK PATH = data\processed\sowers_processed.csv
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:10 | INFO | CI | Pipeline executed successfully!
+2026-04-08 17:56:10 | INFO | CI | ========================
+2026-04-08 17:56:46 | INFO | CI | === RUN START ===
+2026-04-08 17:56:46 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 17:56:46 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 17:56:46 | INFO | CI | python=3.14.3
+2026-04-08 17:56:46 | INFO | CI | os=Windows 11
+2026-04-08 17:56:46 | INFO | CI | shell=powershell
+2026-04-08 17:56:46 | INFO | CI | cwd=.
+2026-04-08 17:56:46 | INFO | CI | github_actions=False
+2026-04-08 17:56:46 | INFO | CI | START PIPELINE
+2026-04-08 17:56:46 | INFO | CI | ROOT_PATH = .
+2026-04-08 17:56:46 | INFO | CI | DATA_PATH = data
+2026-04-08 17:56:46 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 17:56:46 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 17:56:46 | INFO | CI | ========================
+2026-04-08 17:56:46 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 17:56:46 | INFO | CI | ========================
+2026-04-08 17:56:46 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-08 17:56:47 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-08 17:56:47 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 17:56:47 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 17:56:47 | INFO | CI | Top-level elements: ['html']
+2026-04-08 17:56:47 | INFO | CI | VALIDATE: Title found: True
+2026-04-08 17:56:47 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-08 17:56:47 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-08 17:56:47 | INFO | CI | VALIDATE: Capability levels found: True
+2026-04-08 17:56:47 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-08 17:56:47 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | Extracting metadata from HTML
+2026-04-08 17:56:47 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-08 17:56:47 | INFO | CI | For this KISS page, we can extract:
+- Title from <h1> or <h2>
+- Subtitle from visible page text
+- Map heading from <h3>
+- Capability levels from <h5>
+- Contact email from page text
+2026-04-08 17:56:47 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | STAGE 03a: Extract key page fields
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | Extracted title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 17:56:47 | INFO | CI | Extracted subtitle: {"@context":"https:\/\/schema.org","@graph":[{"@type":"BreadcrumbList","@id":"https:\/\/www.kissnetwork.us\/#breadcrumblist","itemListElement":[{"@type":"ListItem","@id":"https:\/\/www.kissnetwork.us#listItem","position":1,"name":"Home"}]},{"@type":"Organization","@id":"https:\/\/www.kissnetwork.us\/#organization","name":"Kansas Initiative for Stroke Survival (KISS) Kansas Initiative for Stroke Survival (KISS)","description":"Improving Stroke Outcomes Across Kansas Pevent.Treat.Beat.","url":"https:\/\/www.kissnetwork.us\/","logo":{"@type":"ImageObject","url":"https:\/\/www.kissnetwork.us\/wp-content\/uploads\/2021\/01\/cropped-cropped-White-Yellow-KISS-Logo-Brain-State-Outline.png","@id":"https:\/\/www.kissnetwork.us\/#organizationLogo","width":4376,"height":1993},"image":{"@id":"https:\/\/www.kissnetwork.us\/#organizationLogo"},"sameAs":["https:\/\/www.facebook.com\/KansasInitiativeforStrokeSurvival\/","https:\/\/www.instagram.com\/kiss_strokesurvival","https:\/\/youtube.com\/@kansasinitiativeforstrokesurvi?feature=shared"]},{"@type":"WebPage","@id":"https:\/\/www.kissnetwork.us\/#webpage","url":"https:\/\/www.kissnetwork.us\/","name":"Kansas Initiative for Stroke Survival | Prevent, Treat, Beat","description":"Kansas Initiative for Stroke Survival works to prevent stroke, improve treatment, and support recovery through education, resources, and community action.","inLanguage":"en","isPartOf":{"@id":"https:\/\/www.kissnetwork.us\/#website"},"breadcrumb":{"@id":"https:\/\/www.kissnetwork.us\/#breadcrumblist"},"datePublished":"2016-05-30T17:58:55-05:00","dateModified":"2026-03-08T15:40:51-05:00"},{"@type":"WebSite","@id":"https:\/\/www.kissnetwork.us\/#website","url":"https:\/\/www.kissnetwork.us\/","name":"Kansas Initiative for Stroke Survival (KISS)","description":"Improving Stroke Outcomes Across Kansas","inLanguage":"en","publisher":{"@id":"https:\/\/www.kissnetwork.us\/#organization"}}]}
+2026-04-08 17:56:47 | INFO | CI | Extracted map heading: Hospital Stroke Treatment Capability Map
+2026-04-08 17:56:47 | INFO | CI | Extracted capability levels: Advanced Comprehensive Stroke Center, Primary Stroke Center, Certified Acute Stroke Ready Hospital, Emergent Stroke Ready Hospitals, Non-Emergent Stroke Ready Hospital
+2026-04-08 17:56:47 | INFO | CI | Extracted contact email: 
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | STAGE 03b: Calculate derived fields
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | Calculated title word count: 6
+2026-04-08 17:56:47 | INFO | CI | Calculated capability count: 5
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | STAGE 03c: Build record and create DataFrame
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | Created DataFrame with 1 row and 7 columns
+2026-04-08 17:56:47 | INFO | CI | Columns: ['title', 'subtitle', 'map_heading', 'capability_levels', 'contact_email', 'title_word_count', 'capability_count']
+2026-04-08 17:56:47 | INFO | CI | DataFrame Details
+2026-04-08 17:56:47 | INFO | CI |   Title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 17:56:47 | INFO | CI |   Capability count: 5
+2026-04-08 17:56:47 | INFO | CI |   Title word count: 6
+2026-04-08 17:56:47 | INFO | CI |   DataFrame preview:
+                                          title  ... capability_count
+0  Kansas Initiative for Stroke Survival (KISS)  ...                5
+
+[1 rows x 7 columns]
+2026-04-08 17:56:47 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-08 17:56:47 | INFO | CI | Transformation complete.
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | SINK PATH = data\processed\sowers_processed.csv
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:56:47 | INFO | CI | Pipeline executed successfully!
+2026-04-08 17:56:47 | INFO | CI | ========================
+2026-04-08 17:59:19 | INFO | CI | === RUN START ===
+2026-04-08 17:59:19 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 17:59:19 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 17:59:19 | INFO | CI | python=3.14.3
+2026-04-08 17:59:19 | INFO | CI | os=Windows 11
+2026-04-08 17:59:19 | INFO | CI | shell=powershell
+2026-04-08 17:59:19 | INFO | CI | cwd=.
+2026-04-08 17:59:19 | INFO | CI | github_actions=False
+2026-04-08 17:59:19 | INFO | CI | START PIPELINE
+2026-04-08 17:59:19 | INFO | CI | ROOT_PATH = .
+2026-04-08 17:59:19 | INFO | CI | DATA_PATH = data
+2026-04-08 17:59:19 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 17:59:19 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 17:59:19 | INFO | CI | ========================
+2026-04-08 17:59:19 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 17:59:19 | INFO | CI | ========================
+2026-04-08 17:59:19 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/how-kiss-works/
+2026-04-08 17:59:21 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/how-kiss-works/
+2026-04-08 17:59:21 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-08 17:59:21 | INFO | CI | ========================
+2026-04-08 17:59:21 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 17:59:21 | INFO | CI | ========================
+2026-04-08 17:59:21 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 17:59:22 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 17:59:22 | INFO | CI | Top-level elements: ['html']
+2026-04-08 17:59:22 | INFO | CI | VALIDATE: Title found: True
+2026-04-08 17:59:22 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-08 17:59:22 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-08 17:59:22 | INFO | CI | VALIDATE: Capability levels found: False
+2026-04-08 17:59:53 | INFO | CI | === RUN START ===
+2026-04-08 17:59:53 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 17:59:53 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 17:59:53 | INFO | CI | python=3.14.3
+2026-04-08 17:59:53 | INFO | CI | os=Windows 11
+2026-04-08 17:59:53 | INFO | CI | shell=powershell
+2026-04-08 17:59:53 | INFO | CI | cwd=.
+2026-04-08 17:59:53 | INFO | CI | github_actions=False
+2026-04-08 17:59:53 | INFO | CI | START PIPELINE
+2026-04-08 17:59:53 | INFO | CI | ROOT_PATH = .
+2026-04-08 17:59:53 | INFO | CI | DATA_PATH = data
+2026-04-08 17:59:53 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 17:59:53 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 17:59:53 | INFO | CI | ========================
+2026-04-08 17:59:53 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 17:59:53 | INFO | CI | ========================
+2026-04-08 17:59:53 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-08 17:59:55 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-08 17:59:55 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 17:59:55 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 17:59:55 | INFO | CI | Top-level elements: ['html']
+2026-04-08 17:59:55 | INFO | CI | VALIDATE: Title found: True
+2026-04-08 17:59:55 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-08 17:59:55 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-08 17:59:55 | INFO | CI | VALIDATE: Capability levels found: True
+2026-04-08 17:59:55 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-08 17:59:55 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | Extracting metadata from HTML
+2026-04-08 17:59:55 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-08 17:59:55 | INFO | CI | For this KISS page, we can extract:
+- Title from <h1> or <h2>
+- Subtitle from visible page text
+- Map heading from <h3>
+- Capability levels from <h5>
+- Contact email from page text
+2026-04-08 17:59:55 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | STAGE 03a: Extract key page fields
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | Extracted title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 17:59:55 | INFO | CI | Extracted subtitle: {"@context":"https:\/\/schema.org","@graph":[{"@type":"BreadcrumbList","@id":"https:\/\/www.kissnetwork.us\/#breadcrumblist","itemListElement":[{"@type":"ListItem","@id":"https:\/\/www.kissnetwork.us#listItem","position":1,"name":"Home"}]},{"@type":"Organization","@id":"https:\/\/www.kissnetwork.us\/#organization","name":"Kansas Initiative for Stroke Survival (KISS) Kansas Initiative for Stroke Survival (KISS)","description":"Improving Stroke Outcomes Across Kansas Pevent.Treat.Beat.","url":"https:\/\/www.kissnetwork.us\/","logo":{"@type":"ImageObject","url":"https:\/\/www.kissnetwork.us\/wp-content\/uploads\/2021\/01\/cropped-cropped-White-Yellow-KISS-Logo-Brain-State-Outline.png","@id":"https:\/\/www.kissnetwork.us\/#organizationLogo","width":4376,"height":1993},"image":{"@id":"https:\/\/www.kissnetwork.us\/#organizationLogo"},"sameAs":["https:\/\/www.facebook.com\/KansasInitiativeforStrokeSurvival\/","https:\/\/www.instagram.com\/kiss_strokesurvival","https:\/\/youtube.com\/@kansasinitiativeforstrokesurvi?feature=shared"]},{"@type":"WebPage","@id":"https:\/\/www.kissnetwork.us\/#webpage","url":"https:\/\/www.kissnetwork.us\/","name":"Kansas Initiative for Stroke Survival | Prevent, Treat, Beat","description":"Kansas Initiative for Stroke Survival works to prevent stroke, improve treatment, and support recovery through education, resources, and community action.","inLanguage":"en","isPartOf":{"@id":"https:\/\/www.kissnetwork.us\/#website"},"breadcrumb":{"@id":"https:\/\/www.kissnetwork.us\/#breadcrumblist"},"datePublished":"2016-05-30T17:58:55-05:00","dateModified":"2026-03-08T15:40:51-05:00"},{"@type":"WebSite","@id":"https:\/\/www.kissnetwork.us\/#website","url":"https:\/\/www.kissnetwork.us\/","name":"Kansas Initiative for Stroke Survival (KISS)","description":"Improving Stroke Outcomes Across Kansas","inLanguage":"en","publisher":{"@id":"https:\/\/www.kissnetwork.us\/#organization"}}]}
+2026-04-08 17:59:55 | INFO | CI | Extracted map heading: Hospital Stroke Treatment Capability Map
+2026-04-08 17:59:55 | INFO | CI | Extracted capability levels: Advanced Comprehensive Stroke Center, Primary Stroke Center, Certified Acute Stroke Ready Hospital, Emergent Stroke Ready Hospitals, Non-Emergent Stroke Ready Hospital
+2026-04-08 17:59:55 | INFO | CI | Extracted contact email: 
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | STAGE 03b: Calculate derived fields
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | Calculated title word count: 6
+2026-04-08 17:59:55 | INFO | CI | Calculated capability count: 5
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | STAGE 03c: Build record and create DataFrame
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | Created DataFrame with 1 row and 7 columns
+2026-04-08 17:59:55 | INFO | CI | Columns: ['title', 'subtitle', 'map_heading', 'capability_levels', 'contact_email', 'title_word_count', 'capability_count']
+2026-04-08 17:59:55 | INFO | CI | DataFrame Details
+2026-04-08 17:59:55 | INFO | CI |   Title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 17:59:55 | INFO | CI |   Capability count: 5
+2026-04-08 17:59:55 | INFO | CI |   Title word count: 6
+2026-04-08 17:59:55 | INFO | CI |   DataFrame preview:
+                                          title  ... capability_count
+0  Kansas Initiative for Stroke Survival (KISS)  ...                5
+
+[1 rows x 7 columns]
+2026-04-08 17:59:55 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-08 17:59:55 | INFO | CI | Transformation complete.
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | SINK PATH = data\processed\sowers_processed.csv
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 17:59:55 | INFO | CI | Pipeline executed successfully!
+2026-04-08 17:59:55 | INFO | CI | ========================
+2026-04-08 18:12:44 | INFO | CI | === RUN START ===
+2026-04-08 18:12:44 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 18:12:44 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 18:12:44 | INFO | CI | python=3.14.3
+2026-04-08 18:12:44 | INFO | CI | os=Windows 11
+2026-04-08 18:12:44 | INFO | CI | shell=powershell
+2026-04-08 18:12:44 | INFO | CI | cwd=.
+2026-04-08 18:12:44 | INFO | CI | github_actions=False
+2026-04-08 18:12:44 | INFO | CI | START PIPELINE
+2026-04-08 18:12:44 | INFO | CI | ROOT_PATH = .
+2026-04-08 18:12:44 | INFO | CI | DATA_PATH = data
+2026-04-08 18:12:44 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 18:12:44 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 18:12:44 | INFO | CI | ========================
+2026-04-08 18:12:44 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 18:12:44 | INFO | CI | ========================
+2026-04-08 18:12:44 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-08 18:12:46 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-08 18:12:46 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-08 18:12:46 | INFO | CI | ========================
+2026-04-08 18:12:46 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 18:12:46 | INFO | CI | ========================
+2026-04-08 18:12:46 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 18:12:46 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 18:12:46 | INFO | CI | Top-level elements: ['html']
+2026-04-08 18:12:46 | INFO | CI | VALIDATE: Title found: True
+2026-04-08 18:12:46 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-08 18:12:46 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-08 18:12:46 | INFO | CI | VALIDATE: Capability levels found: True
+2026-04-08 18:12:46 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-08 18:12:46 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-08 18:12:46 | INFO | CI | ========================
+2026-04-08 18:12:46 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-08 18:12:46 | INFO | CI | ========================
+2026-04-08 18:12:46 | INFO | CI | Extracting metadata from HTML
+2026-04-08 18:12:46 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-08 18:12:46 | INFO | CI | For this KISS page, we can extract:
+- Title from <h1> or <h2>
+- Subtitle from visible page text
+- Map heading from <h3>
+- Capability levels from <h5>
+- Contact email from page text
+2026-04-08 18:12:46 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-08 18:12:46 | INFO | CI | ========================
+2026-04-08 18:12:46 | INFO | CI | STAGE 03a: Extract key page fields
+2026-04-08 18:12:46 | INFO | CI | ========================
+2026-04-08 18:15:28 | INFO | CI | === RUN START ===
+2026-04-08 18:15:28 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 18:15:28 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 18:15:28 | INFO | CI | python=3.14.3
+2026-04-08 18:15:28 | INFO | CI | os=Windows 11
+2026-04-08 18:15:28 | INFO | CI | shell=powershell
+2026-04-08 18:15:28 | INFO | CI | cwd=.
+2026-04-08 18:15:28 | INFO | CI | github_actions=False
+2026-04-08 18:15:28 | INFO | CI | START PIPELINE
+2026-04-08 18:15:28 | INFO | CI | ROOT_PATH = .
+2026-04-08 18:15:28 | INFO | CI | DATA_PATH = data
+2026-04-08 18:15:28 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 18:15:28 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 18:15:28 | INFO | CI | ========================
+2026-04-08 18:15:28 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 18:15:28 | INFO | CI | ========================
+2026-04-08 18:15:28 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-08 18:15:29 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-08 18:15:29 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 18:15:29 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 18:15:29 | INFO | CI | Top-level elements: ['html']
+2026-04-08 18:15:29 | INFO | CI | VALIDATE: Title found: True
+2026-04-08 18:15:29 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-08 18:15:29 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-08 18:15:29 | INFO | CI | VALIDATE: Capability levels found: True
+2026-04-08 18:15:29 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-08 18:15:29 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | Extracting metadata from HTML
+2026-04-08 18:15:29 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-08 18:15:29 | INFO | CI | For this KISS page, we can extract:
+- Title from <h1> or <h2>
+- Subtitle from visible page text
+- Map heading from <h3>
+- Capability levels from <h5>
+- Contact email from page text
+2026-04-08 18:15:29 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | STAGE 03a: Extract key page fields
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | Extracted title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 18:15:29 | INFO | CI | Extracted subtitle: Kansas Initiative for Stroke Survival | Prevent, Treat, Beat
+2026-04-08 18:15:29 | INFO | CI | Extracted map heading: Hospital Stroke Treatment Capability Map
+2026-04-08 18:15:29 | INFO | CI | Extracted capability levels: Advanced Comprehensive Stroke Center, Primary Stroke Center, Certified Acute Stroke Ready Hospital, Emergent Stroke Ready Hospitals, Non-Emergent Stroke Ready Hospital
+2026-04-08 18:15:29 | INFO | CI | Extracted contact email: 
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | STAGE 03b: Calculate derived fields
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | Calculated title word count: 6
+2026-04-08 18:15:29 | INFO | CI | Calculated capability count: 5
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | STAGE 03c: Build record and create DataFrame
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | Created DataFrame with 1 row and 7 columns
+2026-04-08 18:15:29 | INFO | CI | Columns: ['title', 'subtitle', 'map_heading', 'capability_levels', 'contact_email', 'title_word_count', 'capability_count']
+2026-04-08 18:15:29 | INFO | CI | DataFrame Details
+2026-04-08 18:15:29 | INFO | CI |   Title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 18:15:29 | INFO | CI |   Capability count: 5
+2026-04-08 18:15:29 | INFO | CI |   Title word count: 6
+2026-04-08 18:15:29 | INFO | CI |   DataFrame preview:
+                                          title  ... capability_count
+0  Kansas Initiative for Stroke Survival (KISS)  ...                5
+
+[1 rows x 7 columns]
+2026-04-08 18:15:29 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-08 18:15:29 | INFO | CI | Transformation complete.
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | SINK PATH = data\processed\sowers_processed.csv
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:15:29 | INFO | CI | Pipeline executed successfully!
+2026-04-08 18:15:29 | INFO | CI | ========================
+2026-04-08 18:20:18 | INFO | CI | === RUN START ===
+2026-04-08 18:20:18 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 18:20:18 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 18:20:18 | INFO | CI | python=3.14.3
+2026-04-08 18:20:18 | INFO | CI | os=Windows 11
+2026-04-08 18:20:18 | INFO | CI | shell=powershell
+2026-04-08 18:20:18 | INFO | CI | cwd=.
+2026-04-08 18:20:18 | INFO | CI | github_actions=False
+2026-04-08 18:20:18 | INFO | CI | START PIPELINE
+2026-04-08 18:20:18 | INFO | CI | ROOT_PATH = .
+2026-04-08 18:20:18 | INFO | CI | DATA_PATH = data
+2026-04-08 18:20:18 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 18:20:18 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 18:20:18 | INFO | CI | ========================
+2026-04-08 18:20:18 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 18:20:18 | INFO | CI | ========================
+2026-04-08 18:20:18 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-08 18:20:20 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-08 18:20:20 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-08 18:20:20 | INFO | CI | ========================
+2026-04-08 18:20:20 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 18:20:20 | INFO | CI | ========================
+2026-04-08 18:20:20 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 18:20:20 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 18:20:20 | INFO | CI | Top-level elements: ['html']
+2026-04-08 18:20:20 | INFO | CI | VALIDATE: Title found: True
+2026-04-08 18:20:20 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-08 18:20:20 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-08 18:20:20 | INFO | CI | VALIDATE: Capability levels found: True
+2026-04-08 18:20:20 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-08 18:20:20 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-08 18:20:20 | INFO | CI | ========================
+2026-04-08 18:20:20 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-08 18:20:20 | INFO | CI | ========================
+2026-04-08 18:20:20 | INFO | CI | Extracting metadata from HTML
+2026-04-08 18:20:20 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-08 18:20:20 | INFO | CI | For this KISS page, we can extract:
+- Title from <h1> or <h2>
+- Subtitle from visible page text
+- Map heading from <h3>
+- Capability levels from <h5>
+- Contact email from page text
+2026-04-08 18:20:20 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-08 18:20:20 | INFO | CI | ========================
+2026-04-08 18:20:20 | INFO | CI | STAGE 03a: Extract key page fields
+2026-04-08 18:20:20 | INFO | CI | ========================
+2026-04-08 18:20:20 | INFO | CI | Extracted title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 18:20:20 | INFO | CI | Extracted subtitle: Kansas Initiative for Stroke Survival | Prevent, Treat, Beat
+2026-04-08 18:20:20 | INFO | CI | Extracted map heading: Hospital Stroke Treatment Capability Map
+2026-04-08 18:20:20 | INFO | CI | Extracted capability levels: Advanced Comprehensive Stroke Center, Primary Stroke Center, Certified Acute Stroke Ready Hospital, Emergent Stroke Ready Hospitals, Non-Emergent Stroke Ready Hospital
+2026-04-08 18:23:16 | INFO | CI | === RUN START ===
+2026-04-08 18:23:16 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-08 18:23:16 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-08 18:23:16 | INFO | CI | python=3.14.3
+2026-04-08 18:23:16 | INFO | CI | os=Windows 11
+2026-04-08 18:23:16 | INFO | CI | shell=powershell
+2026-04-08 18:23:16 | INFO | CI | cwd=.
+2026-04-08 18:23:16 | INFO | CI | github_actions=False
+2026-04-08 18:23:16 | INFO | CI | START PIPELINE
+2026-04-08 18:23:16 | INFO | CI | ROOT_PATH = .
+2026-04-08 18:23:16 | INFO | CI | DATA_PATH = data
+2026-04-08 18:23:16 | INFO | CI | RAW_PATH = data\raw
+2026-04-08 18:23:16 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-08 18:23:16 | INFO | CI | ========================
+2026-04-08 18:23:16 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-08 18:23:16 | INFO | CI | ========================
+2026-04-08 18:23:16 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-08 18:23:17 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-08 18:23:17 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-08 18:23:17 | INFO | CI | ========================
+2026-04-08 18:23:17 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-08 18:23:17 | INFO | CI | ========================
+2026-04-08 18:23:17 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-08 18:23:17 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-08 18:23:17 | INFO | CI | Top-level elements: ['html']
+2026-04-08 18:23:17 | INFO | CI | VALIDATE: Title found: True
+2026-04-08 18:23:17 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-08 18:23:17 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-08 18:23:17 | INFO | CI | VALIDATE: Capability levels found: True
+2026-04-08 18:23:17 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-08 18:23:17 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-08 18:23:17 | INFO | CI | ========================
+2026-04-08 18:23:17 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-08 18:23:17 | INFO | CI | ========================
+2026-04-08 18:23:17 | INFO | CI | Extracting metadata from HTML
+2026-04-08 18:23:17 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-08 18:23:18 | INFO | CI | For this KISS page, we can extract:
+- Title from <h1> or <h2>
+- Subtitle from visible page text
+- Map heading from <h3>
+- Capability levels from <h5>
+- Contact email from page text
+2026-04-08 18:23:18 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-08 18:23:18 | INFO | CI | ========================
+2026-04-08 18:23:18 | INFO | CI | STAGE 03a: Extract key page fields
+2026-04-08 18:23:18 | INFO | CI | ========================
+2026-04-08 18:23:18 | INFO | CI | Extracted title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 18:23:18 | INFO | CI | Extracted subtitle: Kansas Initiative for Stroke Survival | Prevent, Treat, Beat
+2026-04-08 18:23:18 | INFO | CI | Extracted map heading: Hospital Stroke Treatment Capability Map
+2026-04-08 18:23:18 | INFO | CI | Extracted capability levels: Advanced Comprehensive Stroke Center, Primary Stroke Center, Certified Acute Stroke Ready Hospital, Emergent Stroke Ready Hospitals, Non-Emergent Stroke Ready Hospital
+2026-04-08 18:23:18 | INFO | CI | Extracted contact email: Kansas Initiative for Stroke Survival works to prevent stroke, improve treatment, and support recovery through education, resources, and community action.
+2026-04-08 18:23:18 | INFO | CI | ========================
+2026-04-08 18:23:18 | INFO | CI | STAGE 03b: Calculate derived fields
+2026-04-08 18:23:18 | INFO | CI | ========================
+2026-04-08 18:23:18 | INFO | CI | Calculated title word count: 6
+2026-04-08 18:23:18 | INFO | CI | Calculated capability count: 5
+2026-04-08 18:23:18 | INFO | CI | ========================
+2026-04-08 18:23:18 | INFO | CI | STAGE 03c: Build record and create DataFrame
+2026-04-08 18:23:18 | INFO | CI | ========================
+2026-04-08 18:23:18 | INFO | CI | Created DataFrame with 1 row and 7 columns
+2026-04-08 18:23:18 | INFO | CI | Columns: ['title', 'subtitle', 'map_heading', 'capability_levels', 'description', 'title_word_count', 'capability_count']
+2026-04-08 18:23:18 | INFO | CI | DataFrame Details
+2026-04-08 18:23:18 | INFO | CI |   Title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-08 18:23:18 | INFO | CI |   Capability count: 5
+2026-04-08 18:23:18 | INFO | CI |   Title word count: 6
+2026-04-08 18:23:18 | INFO | CI |   DataFrame preview:
+                                          title  ... capability_count
+0  Kansas Initiative for Stroke Survival (KISS)  ...                5
+
+[1 rows x 7 columns]
+2026-04-08 18:23:18 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-08 18:23:18 | INFO | CI | Transformation complete.
+2026-04-08 18:23:18 | INFO | CI | ========================
+2026-04-08 18:23:18 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-08 18:23:18 | INFO | CI | ========================
+2026-04-08 18:23:18 | INFO | CI | SINK PATH = data\processed\sowers_processed.csv
+2026-04-08 18:23:18 | INFO | CI | ========================
+2026-04-08 18:23:18 | INFO | CI | Pipeline executed successfully!
+2026-04-08 18:23:18 | INFO | CI | ========================
