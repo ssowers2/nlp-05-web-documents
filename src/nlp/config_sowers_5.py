@@ -19,5 +19,5 @@ DATA_PATH: Path = ROOT_PATH / "data"
 RAW_PATH: Path = DATA_PATH / "raw"
 PROCESSED_PATH: Path = DATA_PATH / "processed"
 
-RAW_HTML_PATH: Path = RAW_PATH / "sowers_raw.html"
-PROCESSED_CSV_PATH: Path = PROCESSED_PATH / "sowers_processed.csv"
+RAW_HTML_PATH: Path = RAW_PATH / "sowers_raw_5.html"
+PROCESSED_CSV_PATH: Path = PROCESSED_PATH / "sowers_processed_5.csv"

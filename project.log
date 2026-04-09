@@ -932,3 +932,525 @@
 2026-04-08 18:23:18 | INFO | CI | ========================
 2026-04-08 18:23:18 | INFO | CI | Pipeline executed successfully!
 2026-04-08 18:23:18 | INFO | CI | ========================
+2026-04-09 16:58:47 | INFO | CI | === RUN START ===
+2026-04-09 16:58:47 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-09 16:58:47 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-09 16:58:47 | INFO | CI | python=3.14.3
+2026-04-09 16:58:47 | INFO | CI | os=Windows 11
+2026-04-09 16:58:47 | INFO | CI | shell=powershell
+2026-04-09 16:58:47 | INFO | CI | cwd=.
+2026-04-09 16:58:47 | INFO | CI | github_actions=False
+2026-04-09 16:58:47 | INFO | CI | START PIPELINE
+2026-04-09 16:58:47 | INFO | CI | ROOT_PATH = .
+2026-04-09 16:58:47 | INFO | CI | DATA_PATH = data
+2026-04-09 16:58:47 | INFO | CI | RAW_PATH = data\raw
+2026-04-09 16:58:47 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-09 16:58:47 | INFO | CI | ========================
+2026-04-09 16:58:47 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-09 16:58:47 | INFO | CI | ========================
+2026-04-09 16:58:47 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-09 16:58:50 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-09 16:58:50 | INFO | CI | SINK PATH = data\raw\sowers_raw.html
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-09 16:58:50 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-09 16:58:50 | INFO | CI | Top-level elements: ['html']
+2026-04-09 16:58:50 | INFO | CI | VALIDATE: Title found: True
+2026-04-09 16:58:50 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-09 16:58:50 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-09 16:58:50 | INFO | CI | VALIDATE: Capability levels found: True
+2026-04-09 16:58:50 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-09 16:58:50 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | Extracting metadata from HTML
+2026-04-09 16:58:50 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-09 16:58:50 | INFO | CI | For this KISS page, we can extract:
+- Title from <h1> or <h2>
+- Subtitle from visible page text
+- Map heading from <h3>
+- Capability levels from <h5>
+- Page description from page text
+2026-04-09 16:58:50 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | STAGE 03a: Extract key page fields
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | Extracted title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-09 16:58:50 | INFO | CI | Extracted subtitle: Kansas Initiative for Stroke Survival | Prevent, Treat, Beat
+2026-04-09 16:58:50 | INFO | CI | Extracted map heading: Hospital Stroke Treatment Capability Map
+2026-04-09 16:58:50 | INFO | CI | Extracted capability levels: Advanced Comprehensive Stroke Center, Primary Stroke Center, Certified Acute Stroke Ready Hospital, Emergent Stroke Ready Hospitals, Non-Emergent Stroke Ready Hospital
+2026-04-09 16:58:50 | INFO | CI | Extracted page description: Kansas Initiative for Stroke Survival works to prevent stroke, improve treatment, and support recovery through education, resources, and community action.
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | STAGE 03b: Calculate derived fields
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | Calculated title word count: 6
+2026-04-09 16:58:50 | INFO | CI | Calculated capability count: 5
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | STAGE 03c: Build record and create DataFrame
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | Created DataFrame with 1 row and 7 columns
+2026-04-09 16:58:50 | INFO | CI | Columns: ['title', 'subtitle', 'map_heading', 'capability_levels', 'description', 'title_word_count', 'capability_count']
+2026-04-09 16:58:50 | INFO | CI | DataFrame Details
+2026-04-09 16:58:50 | INFO | CI |   Title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-09 16:58:50 | INFO | CI |   Capability count: 5
+2026-04-09 16:58:50 | INFO | CI |   Title word count: 6
+2026-04-09 16:58:50 | INFO | CI |   DataFrame preview:
+                                          title                                           subtitle  ... title_word_count capability_count
+0  Kansas Initiative for Stroke Survival (KISS)  Kansas Initiative for Stroke Survival | Preven...  ...                6                5
+
+[1 rows x 7 columns]
+2026-04-09 16:58:50 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-09 16:58:50 | INFO | CI | Transformation complete.
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | SINK PATH = data\processed\sowers_processed.csv
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 16:58:50 | INFO | CI | Pipeline executed successfully!
+2026-04-09 16:58:50 | INFO | CI | ========================
+2026-04-09 17:14:04 | INFO | CI | === RUN START ===
+2026-04-09 17:14:04 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-09 17:14:04 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-09 17:14:04 | INFO | CI | python=3.14.3
+2026-04-09 17:14:04 | INFO | CI | os=Windows 11
+2026-04-09 17:14:04 | INFO | CI | shell=powershell
+2026-04-09 17:14:04 | INFO | CI | cwd=.
+2026-04-09 17:14:04 | INFO | CI | github_actions=False
+2026-04-09 17:14:04 | INFO | CI | START PIPELINE
+2026-04-09 17:14:04 | INFO | CI | ROOT_PATH = .
+2026-04-09 17:14:04 | INFO | CI | DATA_PATH = data
+2026-04-09 17:14:04 | INFO | CI | RAW_PATH = data\raw
+2026-04-09 17:14:04 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-09 17:14:04 | INFO | CI | ========================
+2026-04-09 17:14:04 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-09 17:14:04 | INFO | CI | ========================
+2026-04-09 17:14:04 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-09 17:14:05 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-09 17:14:05 | INFO | CI | SINK PATH = data\raw\sowers_raw_5.html
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-09 17:14:05 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-09 17:14:05 | INFO | CI | Top-level elements: ['html']
+2026-04-09 17:14:05 | INFO | CI | VALIDATE: Title found: True
+2026-04-09 17:14:05 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-09 17:14:05 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-09 17:14:05 | INFO | CI | VALIDATE: Capability levels found: True
+2026-04-09 17:14:05 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-09 17:14:05 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | Extracting metadata from HTML
+2026-04-09 17:14:05 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-09 17:14:05 | INFO | CI | For this arXiv page, we can extract:
+- Title from <h1 class='title'>
+- Authors from <div class='authors'>
+- Abstract from <blockquote class='abstract'>
+- Primary subject from <div class='subheader'>
+- Submission date from <div class='dateline'>
+- ArXiv ID from canonical link
+2026-04-09 17:14:05 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | STAGE 03a: Extract bibliographic fields (title, authors, abstract)
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | Extracted title: unknown
+2026-04-09 17:14:05 | INFO | CI | Extracted authors: unknown
+2026-04-09 17:14:05 | INFO | CI | Extracted abstract: unknown...
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | STAGE 03b: Extract metadata field subjects from subheader
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | Extracted subjects: unknown
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | STAGE 03c: Extract metadata field date from dateline
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | Extracted submitted: unknown
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | STAGE 03d: Extract metadata field arxiv_id from canonical link
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | Extracted arxiv_id: https://www.kissnetwork.us/
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | STAGE 03e: Calculate derived fields
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | Calculated abstract word count: 0
+2026-04-09 17:14:05 | INFO | CI | Calculated author count: 0
+2026-04-09 17:14:05 | INFO | CI | Calculated title word count: 0
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | STAGE 03f: Build record and create DataFrame
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | Created DataFrame with 1 row and 9 columns
+2026-04-09 17:14:05 | INFO | CI | Columns: ['arxiv_id', 'title', 'authors', 'subjects', 'submitted', 'abstract', 'abstract_word_count', 'author_count', 'title_word_count']
+2026-04-09 17:14:05 | INFO | CI | DataFrame Details
+2026-04-09 17:14:05 | INFO | CI |   Title: unknown
+2026-04-09 17:14:05 | INFO | CI |   Author count: 0
+2026-04-09 17:14:05 | INFO | CI |   Abstract word count: 0
+2026-04-09 17:14:05 | INFO | CI |   DataFrame preview:
+                      arxiv_id    title  authors subjects submitted abstract  abstract_word_count  author_count  title_word_count
+0  https://www.kissnetwork.us/  unknown  unknown  unknown   unknown  unknown                    0             0                 0
+2026-04-09 17:14:05 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-09 17:14:05 | INFO | CI | Transformation complete.
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | SINK PATH = data\processed\sowers_processed_5.csv
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:14:05 | INFO | CI | Pipeline executed successfully!
+2026-04-09 17:14:05 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | === RUN START ===
+2026-04-09 17:30:29 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-09 17:30:29 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-09 17:30:29 | INFO | CI | python=3.14.3
+2026-04-09 17:30:29 | INFO | CI | os=Windows 11
+2026-04-09 17:30:29 | INFO | CI | shell=powershell
+2026-04-09 17:30:29 | INFO | CI | cwd=.
+2026-04-09 17:30:29 | INFO | CI | github_actions=False
+2026-04-09 17:30:29 | INFO | CI | START PIPELINE
+2026-04-09 17:30:29 | INFO | CI | ROOT_PATH = .
+2026-04-09 17:30:29 | INFO | CI | DATA_PATH = data
+2026-04-09 17:30:29 | INFO | CI | RAW_PATH = data\raw
+2026-04-09 17:30:29 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/abs/2602.20021
+2026-04-09 17:30:29 | INFO | CI | SOURCE URL = https://arxiv.org/abs/2602.20021
+2026-04-09 17:30:29 | INFO | CI | SINK PATH = data\raw\case_raw.html
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-09 17:30:29 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-09 17:30:29 | INFO | CI | Top-level elements: ['html']
+2026-04-09 17:30:29 | INFO | CI | VALIDATE: Title found: True
+2026-04-09 17:30:29 | INFO | CI | VALIDATE: Authors found: True
+2026-04-09 17:30:29 | INFO | CI | VALIDATE: Abstract found: True
+2026-04-09 17:30:29 | INFO | CI | VALIDATE: Subjects found: True
+2026-04-09 17:30:29 | INFO | CI | VALIDATE: Dateline found: True
+2026-04-09 17:30:29 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-09 17:30:29 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | Extracting metadata from HTML
+2026-04-09 17:30:29 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-09 17:30:29 | INFO | CI | For this arXiv page, we can extract:
+- Title from <h1 class='title'>
+- Authors from <div class='authors'>
+- Abstract from <blockquote class='abstract'>
+- Primary subject from <div class='subheader'>
+- Submission date from <div class='dateline'>
+- ArXiv ID from canonical link
+2026-04-09 17:30:29 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | STAGE 03a: Extract bibliographic fields (title, authors, abstract)
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | Extracted title: Agents of Chaos
+2026-04-09 17:30:29 | INFO | CI | Extracted authors: Natalie Shapira, Chris Wendler, Avery Yen, Gabriele Sarti, Koyena Pal, Olivia Floody, Adam Belfki, Alex Loftus, Aditya Ratan Jannali, Nikhil Prakash, Jasmine Cui, Giordano Rogers, Jannik Brinkmann, Can Rager, Amir Zur, Michael Ripa, Aruna Sankaranarayanan, David Atkinson, Rohit Gandikota, Jaden Fiotto-Kaufman, EunJeong Hwang, Hadas Orgad, P Sam Sahil, Negev Taglicht, Tomer Shabtay, Atai Ambus, Nitay Alon, Shiri Oron, Ayelet Gordon-Tapiero, Yotam Kaplan, Vered Shwartz, Tamar Rott Shaham, Christoph Riedl, Reuth Mirsky, Maarten Sap, David Manheim, Tomer Ullman, David Bau
+2026-04-09 17:30:29 | INFO | CI | Extracted abstract: We report an exploratory red-teaming study of autonomous language-model-powered agents deployed in a...
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | STAGE 03b: Extract metadata field subjects from subheader
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | Extracted subjects: Computer Science > Artificial Intelligence
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | STAGE 03c: Extract metadata field date from dateline
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | Extracted submitted: [Submitted on 23 Feb 2026]
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | STAGE 03d: Extract metadata field arxiv_id from canonical link
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | Extracted arxiv_id: 2602.20021
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | STAGE 03e: Calculate derived fields
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | Calculated abstract word count: 177
+2026-04-09 17:30:29 | INFO | CI | Calculated author count: 38
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | STAGE 03f: Build record and create DataFrame
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | Created DataFrame with 1 row and 8 columns
+2026-04-09 17:30:29 | INFO | CI | Columns: ['arxiv_id', 'title', 'authors', 'subjects', 'submitted', 'abstract', 'abstract_word_count', 'author_count']
+2026-04-09 17:30:29 | INFO | CI | DataFrame Details
+2026-04-09 17:30:29 | INFO | CI |   Title: Agents of Chaos
+2026-04-09 17:30:29 | INFO | CI |   Author count: 38
+2026-04-09 17:30:29 | INFO | CI |   Abstract word count: 177
+2026-04-09 17:30:29 | INFO | CI |   DataFrame preview:
+     arxiv_id            title  ... abstract_word_count author_count
+0  2602.20021  Agents of Chaos  ...                 177           38
+
+[1 rows x 8 columns]
+2026-04-09 17:30:29 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-09 17:30:29 | INFO | CI | Transformation complete.
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | SINK PATH = data\processed\case_processed.csv
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:29 | INFO | CI | Pipeline executed successfully!
+2026-04-09 17:30:29 | INFO | CI | ========================
+2026-04-09 17:30:49 | INFO | CI | === RUN START ===
+2026-04-09 17:30:49 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-09 17:30:49 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-09 17:30:49 | INFO | CI | python=3.14.3
+2026-04-09 17:30:49 | INFO | CI | os=Windows 11
+2026-04-09 17:30:49 | INFO | CI | shell=powershell
+2026-04-09 17:30:49 | INFO | CI | cwd=.
+2026-04-09 17:30:49 | INFO | CI | github_actions=False
+2026-04-09 17:30:49 | INFO | CI | START PIPELINE
+2026-04-09 17:30:49 | INFO | CI | ROOT_PATH = .
+2026-04-09 17:30:49 | INFO | CI | DATA_PATH = data
+2026-04-09 17:30:49 | INFO | CI | RAW_PATH = data\raw
+2026-04-09 17:30:49 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-09 17:30:49 | INFO | CI | ========================
+2026-04-09 17:30:49 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-09 17:30:49 | INFO | CI | ========================
+2026-04-09 17:30:49 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/abs/2602.20021
+2026-04-09 17:30:50 | INFO | CI | SOURCE URL = https://arxiv.org/abs/2602.20021
+2026-04-09 17:30:50 | INFO | CI | SINK PATH = data\raw\sowers_raw_4.html
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-09 17:30:50 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-09 17:30:50 | INFO | CI | Top-level elements: ['html']
+2026-04-09 17:30:50 | INFO | CI | VALIDATE: Title found: True
+2026-04-09 17:30:50 | INFO | CI | VALIDATE: Authors found: True
+2026-04-09 17:30:50 | INFO | CI | VALIDATE: Abstract found: True
+2026-04-09 17:30:50 | INFO | CI | VALIDATE: Subjects found: True
+2026-04-09 17:30:50 | INFO | CI | VALIDATE: Dateline found: True
+2026-04-09 17:30:50 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-09 17:30:50 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | Extracting metadata from HTML
+2026-04-09 17:30:50 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-09 17:30:50 | INFO | CI | For this arXiv page, we can extract:
+- Title from <h1 class='title'>
+- Authors from <div class='authors'>
+- Abstract from <blockquote class='abstract'>
+- Primary subject from <div class='subheader'>
+- Submission date from <div class='dateline'>
+- ArXiv ID from canonical link
+2026-04-09 17:30:50 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | STAGE 03a: Extract bibliographic fields (title, authors, abstract)
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | Extracted title: Agents of Chaos
+2026-04-09 17:30:50 | INFO | CI | Extracted authors: Natalie Shapira, Chris Wendler, Avery Yen, Gabriele Sarti, Koyena Pal, Olivia Floody, Adam Belfki, Alex Loftus, Aditya Ratan Jannali, Nikhil Prakash, Jasmine Cui, Giordano Rogers, Jannik Brinkmann, Can Rager, Amir Zur, Michael Ripa, Aruna Sankaranarayanan, David Atkinson, Rohit Gandikota, Jaden Fiotto-Kaufman, EunJeong Hwang, Hadas Orgad, P Sam Sahil, Negev Taglicht, Tomer Shabtay, Atai Ambus, Nitay Alon, Shiri Oron, Ayelet Gordon-Tapiero, Yotam Kaplan, Vered Shwartz, Tamar Rott Shaham, Christoph Riedl, Reuth Mirsky, Maarten Sap, David Manheim, Tomer Ullman, David Bau
+2026-04-09 17:30:50 | INFO | CI | Extracted abstract: We report an exploratory red-teaming study of autonomous language-model-powered agents deployed in a...
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | STAGE 03b: Extract metadata field subjects from subheader
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | Extracted subjects: Computer Science > Artificial Intelligence
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | STAGE 03c: Extract metadata field date from dateline
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | Extracted submitted: [Submitted on 23 Feb 2026]
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | STAGE 03d: Extract metadata field arxiv_id from canonical link
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | Extracted arxiv_id: 2602.20021
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | STAGE 03e: Calculate derived fields
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | Calculated abstract word count: 177
+2026-04-09 17:30:50 | INFO | CI | Calculated author count: 38
+2026-04-09 17:30:50 | INFO | CI | Calculated title word count: 3
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | STAGE 03f: Build record and create DataFrame
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | Created DataFrame with 1 row and 9 columns
+2026-04-09 17:30:50 | INFO | CI | Columns: ['arxiv_id', 'title', 'authors', 'subjects', 'submitted', 'abstract', 'abstract_word_count', 'author_count', 'title_word_count']
+2026-04-09 17:30:50 | INFO | CI | DataFrame Details
+2026-04-09 17:30:50 | INFO | CI |   Title: Agents of Chaos
+2026-04-09 17:30:50 | INFO | CI |   Author count: 38
+2026-04-09 17:30:50 | INFO | CI |   Abstract word count: 177
+2026-04-09 17:30:50 | INFO | CI |   DataFrame preview:
+     arxiv_id            title                                            authors  ... abstract_word_count author_count title_word_count
+0  2602.20021  Agents of Chaos  Natalie Shapira, Chris Wendler, Avery Yen, Gab...  ...                 177           38                3
+
+[1 rows x 9 columns]
+2026-04-09 17:30:50 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-09 17:30:50 | INFO | CI | Transformation complete.
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | SINK PATH = data\processed\sowers_processed_4.csv
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:30:50 | INFO | CI | Pipeline executed successfully!
+2026-04-09 17:30:50 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | === RUN START ===
+2026-04-09 17:32:11 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-09 17:32:11 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-09 17:32:11 | INFO | CI | python=3.14.3
+2026-04-09 17:32:11 | INFO | CI | os=Windows 11
+2026-04-09 17:32:11 | INFO | CI | shell=powershell
+2026-04-09 17:32:11 | INFO | CI | cwd=.
+2026-04-09 17:32:11 | INFO | CI | github_actions=False
+2026-04-09 17:32:11 | INFO | CI | START PIPELINE
+2026-04-09 17:32:11 | INFO | CI | ROOT_PATH = .
+2026-04-09 17:32:11 | INFO | CI | DATA_PATH = data
+2026-04-09 17:32:11 | INFO | CI | RAW_PATH = data\raw
+2026-04-09 17:32:11 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | EXTRACT: Fetching HTML from https://arxiv.org/abs/2602.20021
+2026-04-09 17:32:11 | INFO | CI | SOURCE URL = https://arxiv.org/abs/2602.20021
+2026-04-09 17:32:11 | INFO | CI | SINK PATH = data\raw\sowers_raw_4.html
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-09 17:32:11 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-09 17:32:11 | INFO | CI | Top-level elements: ['html']
+2026-04-09 17:32:11 | INFO | CI | VALIDATE: Title found: True
+2026-04-09 17:32:11 | INFO | CI | VALIDATE: Authors found: True
+2026-04-09 17:32:11 | INFO | CI | VALIDATE: Abstract found: True
+2026-04-09 17:32:11 | INFO | CI | VALIDATE: Subjects found: True
+2026-04-09 17:32:11 | INFO | CI | VALIDATE: Dateline found: True
+2026-04-09 17:32:11 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-09 17:32:11 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | Extracting metadata from HTML
+2026-04-09 17:32:11 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-09 17:32:11 | INFO | CI | For this arXiv page, we can extract:
+- Title from <h1 class='title'>
+- Authors from <div class='authors'>
+- Abstract from <blockquote class='abstract'>
+- Primary subject from <div class='subheader'>
+- Submission date from <div class='dateline'>
+- ArXiv ID from canonical link
+2026-04-09 17:32:11 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | STAGE 03a: Extract bibliographic fields (title, authors, abstract)
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | Extracted title: Agents of Chaos
+2026-04-09 17:32:11 | INFO | CI | Extracted authors: Natalie Shapira, Chris Wendler, Avery Yen, Gabriele Sarti, Koyena Pal, Olivia Floody, Adam Belfki, Alex Loftus, Aditya Ratan Jannali, Nikhil Prakash, Jasmine Cui, Giordano Rogers, Jannik Brinkmann, Can Rager, Amir Zur, Michael Ripa, Aruna Sankaranarayanan, David Atkinson, Rohit Gandikota, Jaden Fiotto-Kaufman, EunJeong Hwang, Hadas Orgad, P Sam Sahil, Negev Taglicht, Tomer Shabtay, Atai Ambus, Nitay Alon, Shiri Oron, Ayelet Gordon-Tapiero, Yotam Kaplan, Vered Shwartz, Tamar Rott Shaham, Christoph Riedl, Reuth Mirsky, Maarten Sap, David Manheim, Tomer Ullman, David Bau
+2026-04-09 17:32:11 | INFO | CI | Extracted abstract: We report an exploratory red-teaming study of autonomous language-model-powered agents deployed in a...
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | STAGE 03b: Extract metadata field subjects from subheader
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | Extracted subjects: Computer Science > Artificial Intelligence
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | STAGE 03c: Extract metadata field date from dateline
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | Extracted submitted: [Submitted on 23 Feb 2026]
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | STAGE 03d: Extract metadata field arxiv_id from canonical link
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | Extracted arxiv_id: 2602.20021
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | STAGE 03e: Calculate derived fields
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | Calculated abstract word count: 177
+2026-04-09 17:32:11 | INFO | CI | Calculated author count: 38
+2026-04-09 17:32:11 | INFO | CI | Calculated title word count: 3
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | STAGE 03f: Build record and create DataFrame
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | Created DataFrame with 1 row and 9 columns
+2026-04-09 17:32:11 | INFO | CI | Columns: ['arxiv_id', 'title', 'authors', 'subjects', 'submitted', 'abstract', 'abstract_word_count', 'author_count', 'title_word_count']
+2026-04-09 17:32:11 | INFO | CI | DataFrame Details
+2026-04-09 17:32:11 | INFO | CI |   Title: Agents of Chaos
+2026-04-09 17:32:11 | INFO | CI |   Author count: 38
+2026-04-09 17:32:11 | INFO | CI |   Abstract word count: 177
+2026-04-09 17:32:11 | INFO | CI |   DataFrame preview:
+     arxiv_id            title                                            authors  ... abstract_word_count author_count title_word_count
+0  2602.20021  Agents of Chaos  Natalie Shapira, Chris Wendler, Avery Yen, Gab...  ...                 177           38                3
+
+[1 rows x 9 columns]
+2026-04-09 17:32:11 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-09 17:32:11 | INFO | CI | Transformation complete.
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | SINK PATH = data\processed\sowers_processed_4.csv
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:11 | INFO | CI | Pipeline executed successfully!
+2026-04-09 17:32:11 | INFO | CI | ========================
+2026-04-09 17:32:23 | INFO | CI | === RUN START ===
+2026-04-09 17:32:23 | INFO | CI | project=Module 5: EVTL PIPELINE - WEB DOCUMENTS (HTML)
+2026-04-09 17:32:23 | INFO | CI | repo_dir=nlp-05-web-documents
+2026-04-09 17:32:23 | INFO | CI | python=3.14.3
+2026-04-09 17:32:23 | INFO | CI | os=Windows 11
+2026-04-09 17:32:23 | INFO | CI | shell=powershell
+2026-04-09 17:32:23 | INFO | CI | cwd=.
+2026-04-09 17:32:23 | INFO | CI | github_actions=False
+2026-04-09 17:32:23 | INFO | CI | START PIPELINE
+2026-04-09 17:32:23 | INFO | CI | ROOT_PATH = .
+2026-04-09 17:32:23 | INFO | CI | DATA_PATH = data
+2026-04-09 17:32:23 | INFO | CI | RAW_PATH = data\raw
+2026-04-09 17:32:23 | INFO | CI | PROCESSED_PATH = data\processed
+2026-04-09 17:32:23 | INFO | CI | ========================
+2026-04-09 17:32:23 | INFO | CI | STAGE 01: EXTRACT starting... 
+2026-04-09 17:32:23 | INFO | CI | ========================
+2026-04-09 17:32:23 | INFO | CI | EXTRACT: Fetching HTML from https://www.kissnetwork.us/
+2026-04-09 17:32:24 | INFO | CI | SOURCE URL = https://www.kissnetwork.us/
+2026-04-09 17:32:24 | INFO | CI | SINK PATH = data\raw\sowers_raw_5.html
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | STAGE 02: VALIDATE starting...
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | HTML STRUCTURE INSPECTION:
+2026-04-09 17:32:24 | INFO | CI | Top-level type: BeautifulSoup
+2026-04-09 17:32:24 | INFO | CI | Top-level elements: ['html']
+2026-04-09 17:32:24 | INFO | CI | VALIDATE: Title found: True
+2026-04-09 17:32:24 | INFO | CI | VALIDATE: Subtitle found: True
+2026-04-09 17:32:24 | INFO | CI | VALIDATE: Map heading found: True
+2026-04-09 17:32:24 | INFO | CI | VALIDATE: Capability levels found: True
+2026-04-09 17:32:24 | INFO | CI | VALIDATE: HTML structure is valid.
+2026-04-09 17:32:24 | INFO | CI | Sink: validated BeautifulSoup object
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | STAGE 03: TRANSFORM starting...
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | Extracting metadata from HTML
+2026-04-09 17:32:24 | INFO | CI | We must manually inspect the HTML structure to identify the fields we want to extract.
+2026-04-09 17:32:24 | INFO | CI | For this KISS page, we can extract:
+- Title from <h1> or <h2>
+- Subtitle from visible page text
+- Map heading from <h3>
+- Capability levels from <h5>
+- Page description from page text
+2026-04-09 17:32:24 | INFO | CI | Replace any missing content with `unknown` to ensure all are strings.
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | STAGE 03a: Extract key page fields
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | Extracted title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-09 17:32:24 | INFO | CI | Extracted subtitle: Kansas Initiative for Stroke Survival | Prevent, Treat, Beat
+2026-04-09 17:32:24 | INFO | CI | Extracted map heading: Hospital Stroke Treatment Capability Map
+2026-04-09 17:32:24 | INFO | CI | Extracted capability levels: Advanced Comprehensive Stroke Center, Primary Stroke Center, Certified Acute Stroke Ready Hospital, Emergent Stroke Ready Hospitals, Non-Emergent Stroke Ready Hospital
+2026-04-09 17:32:24 | INFO | CI | Extracted page description: Kansas Initiative for Stroke Survival works to prevent stroke, improve treatment, and support recovery through education, resources, and community action.
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | STAGE 03b: Calculate derived fields
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | Calculated title word count: 6
+2026-04-09 17:32:24 | INFO | CI | Calculated capability count: 5
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | STAGE 03c: Build record and create DataFrame
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | Created DataFrame with 1 row and 7 columns
+2026-04-09 17:32:24 | INFO | CI | Columns: ['title', 'subtitle', 'map_heading', 'capability_levels', 'description', 'title_word_count', 'capability_count']
+2026-04-09 17:32:24 | INFO | CI | DataFrame Details
+2026-04-09 17:32:24 | INFO | CI |   Title: Kansas Initiative for Stroke Survival (KISS)
+2026-04-09 17:32:24 | INFO | CI |   Capability count: 5
+2026-04-09 17:32:24 | INFO | CI |   Title word count: 6
+2026-04-09 17:32:24 | INFO | CI |   DataFrame preview:
+                                          title                                           subtitle  ... title_word_count capability_count
+0  Kansas Initiative for Stroke Survival (KISS)  Kansas Initiative for Stroke Survival | Preven...  ...                6                5
+
+[1 rows x 7 columns]
+2026-04-09 17:32:24 | INFO | CI | Sink: Pandas DataFrame created
+2026-04-09 17:32:24 | INFO | CI | Transformation complete.
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | STAGE 04: LOAD starting...
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | SINK PATH = data\processed\sowers_processed_5.csv
+2026-04-09 17:32:24 | INFO | CI | ========================
+2026-04-09 17:32:24 | INFO | CI | Pipeline executed successfully!
+2026-04-09 17:32:24 | INFO | CI | ========================
